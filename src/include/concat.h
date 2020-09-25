@@ -34,8 +34,10 @@ namespace test_concat {
         auto max_s = std::max(s1, s2);
         std::unique_ptr<T[]> unit_matrix(new int[max_s * max_s]);
 
-        generate_unit_matrix(unit_matrix.get(), max_s);
+        generate_unit_matrix(unit_matrix.get(), s1);
         mul_matrix(m1, unit_matrix.get(), 1, s1, s1, result);
+        
+        generate_unit_matrix(unit_matrix.get(), s2);
         mul_matrix(m2, unit_matrix.get(), 1, s2, s2, result + s1);
     }
 }
