@@ -1,6 +1,19 @@
-cmake_minimum_required(VERSION 3.17)
-project(concat_test)
+cmake_minimum_required(VERSION 3.10)
+project(concat)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(concat_test main.cpp)
+set(EXTERNAL_LIB ext_lib)
+
+set(BINARY_NAME concat)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+
+add_subdirectory(test)
+add_subdirectory(src)
+
+add_subdirectory(${EXTERNAL_LIB}/googletest
+        ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
+        EXCLUDE_FROM_ALL)
